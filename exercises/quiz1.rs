@@ -11,8 +11,7 @@
 // Write a function that calculates the price of an order of apples given the
 // quantity bought. No hints this time!
 //
-// // I AM NOT DONE
-
+// No hints this time ;)
 
 
 // Put your function here!
