@@ -4,7 +4,6 @@
 // hint.
 
 
-
 #[derive(PartialEq, Debug)]
 struct PositiveNonzeroInteger(u64);
 
@@ -16,13 +15,13 @@ enum CreationError {
 
 impl PositiveNonzeroInteger {
     fn new(value: i64) -> Result<PositiveNonzeroInteger, CreationError> {
-        if value > 0{
-            Ok(PositiveNonzeroInteger(value as u64))
-         } else if value == 0 {
-               Err(CreationError::Zero)
-           } else {
-               Err(CreationError::Negative)
-         }
+        // Hmm...? Why is this only returning an Ok value?
+        if value < 0 {
+            return Err(CreationError::Negative);
+        }else if value == 0{
+            return Err(CreationError::Zero);
+        }
+        Ok(PositiveNonzeroInteger(value as u64))
     }
 }
 

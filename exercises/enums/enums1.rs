@@ -3,14 +3,12 @@
 // No hints this time! ;)
 
 
-
 #[derive(Debug)]
-enum Message {Quit,
+enum Message {
+    Quit,
     Echo,
     Move,
     ChangeColor,
-    
-    // TODO: define a few types of messages as used below
 }
 
 fn main() {

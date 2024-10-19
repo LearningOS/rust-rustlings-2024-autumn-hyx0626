@@ -2,7 +2,7 @@
 	heap
 	This question requires you to implement a binary heap function
 */
-// I AM NOT DONE
+
 
 use std::cmp::Ord;
 use std::default::Default;
@@ -36,8 +36,17 @@ where
         self.len() == 0
     }
 
-    pub fn add(&mut self, value: T) {
-        //TODO
+    pub fn add(&mut self, value: T) 
+    {
+        self.items.push(value);
+        self.count += 1;
+        let mut index = self.len();
+        if self.len() > 1 {
+            while index > 1 && !(self.comparator)(&self.items[self.parent_idx(index)], &self.items[index]) {
+                self.items.swap(index, index / 2);
+                index = self.parent_idx(index);
+            }
+        }
     }
 
     fn parent_idx(&self, idx: usize) -> usize {
@@ -57,8 +66,14 @@ where
     }
 
     fn smallest_child_idx(&self, idx: usize) -> usize {
-        //TODO
-		0
+        let left = self.left_child_idx(idx);
+        let right = self.right_child_idx(idx);
+
+        if right > self.count || (self.comparator)(&self.items[left], &self.items[right]) {
+            left
+        } else {
+            right
+        }
     }
 }
 
@@ -84,8 +99,25 @@ where
     type Item = T;
 
     fn next(&mut self) -> Option<T> {
-        //TODO
-		None
+        if self.count == 0 {
+            return None;
+        }
+        let item = self.items.swap_remove(1);  
+        self.count -= 1;
+        if self.count == 0 {
+            return Some(item);
+        }
+        let mut index = 1;
+        while self.children_present(index) {
+            let small = self.smallest_child_idx(index);
+            if (self.comparator)(&self.items[index], &self.items[small]){
+                break;
+            }
+            self.items.swap(index,small);
+            index = small;
+        } 
+                                        
+        Some(item)
     }
 }
 

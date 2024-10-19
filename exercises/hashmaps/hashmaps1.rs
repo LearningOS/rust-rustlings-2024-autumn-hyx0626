@@ -12,17 +12,14 @@
 // hint.
 
 
-
-use std::collections::{hash_map, HashMap};
+use std::collections::HashMap;
 
 fn fruit_basket() -> HashMap<String, u32> {
-    let mut basket = HashMap::new();// TODO: declare your hash map here.
-
+    let mut basket = HashMap::new();
+    basket.insert(String::from("apple"), 3);
+    basket.insert(String::from("mango"), 4);
     // Two bananas are already given for you :)
     basket.insert(String::from("banana"), 2);
-    basket.insert(String::from("A"), 3);
-    basket.insert(String::from("B"), 4);
-    basket.insert(String::from("C"), 5);
 
     // TODO: Put more fruits in your basket here.
 

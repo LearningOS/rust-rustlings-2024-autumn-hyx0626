@@ -8,17 +8,16 @@
 // hint.
 
 
-
 trait AppendBar {
     fn append_bar(self) -> Self;
 }
 
 impl AppendBar for String {
-    fn append_bar(self) -> String {
-    self+"Bar"
-
-    }
     // TODO: Implement `AppendBar` for type `String`.
+    fn append_bar(mut self) -> Self{
+        self.push_str("Bar");
+        self   
+    }
 }
 
 fn main() {

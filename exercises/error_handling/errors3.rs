@@ -8,23 +8,21 @@
 // hint.
 
 
+use std::num::ParseIntError;
 
-use std::{env::consts, num::ParseIntError};
-
-fn main() {
+fn main() -> Result<(), Box<dyn std::error::Error>>{
     let mut tokens = 100;
     let pretend_user_input = "8";
 
-    let mut cost = match total_cost(pretend_user_input){
-        Ok(cost)=>cost,
-        Err(e)=>100
-        };
+    let cost = total_cost(pretend_user_input)?;
 
     if cost > tokens {
         println!("You can't afford that many!");
+        Ok(())
     } else {
         tokens -= cost;
         println!("You now have {} tokens.", tokens);
+        Ok(())
     }
 }
 

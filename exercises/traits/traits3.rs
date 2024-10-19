@@ -9,10 +9,9 @@
 // hint.
 
 
-
 pub trait Licensed {
     fn licensing_info(&self) -> String{
-    ("Some information").to_string()
+        "Some information".to_string()
     }
 }
 
